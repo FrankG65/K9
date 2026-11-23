@@ -1,16 +1,16 @@
 # Projektstatistik
 
-Stand: 23.11.2026 11:05. Diese Seite zeigt den Stand bei der Veröffentlichung. Zeiten und Commits stammen aus der Versionsgeschichte des Entwicklungs-PCs, die nicht mit veröffentlicht ist.
+Stand: 23.11.2026 13:28. Diese Seite zeigt den Stand bei der Veröffentlichung. Zeiten und Commits stammen aus der Versionsgeschichte des Entwicklungs-PCs, die nicht mit veröffentlicht ist.
 
 ### Zeitraum
 
 | Angabe | Wert |
 |---|---|
 | Projektstart | 13.11.2026 09:59 Uhr |
-| Letzte Änderung | 23.11.2026 11:05 Uhr |
-| Kalenderzeit | 241,1 h |
-| Aktive Arbeitszeit (Schätzung) | 58,8 h in 51 Arbeitsblöcken |
-| Commits | 238 |
+| Letzte Änderung | 23.11.2026 13:28 Uhr |
+| Kalenderzeit | 243,5 h |
+| Aktive Arbeitszeit (Schätzung) | 59,2 h in 52 Arbeitsblöcken |
+| Commits | 241 |
 
 Schätzung der aktiven Zeit: Commits und Meilensteine werden zu Arbeitsblöcken zusammengefasst; eine Pause von mehr als 60 Minuten beginnt einen neuen Block. Arbeit vor dem ersten Ereignis eines Blocks ist nicht enthalten.
 
@@ -42,7 +42,7 @@ K9 wurde vollständig im Gespräch mit Claude (Claude Code) entwickelt. Die Tabe
 | Eingabe in den Zwischenspeicher geschrieben (1 Stunde) | 3.868.328 | 16,00 USD | 61,89 USD |
 | **Summe der aufgezeichneten Sitzungen** | | | **177,83 USD** |
 
-**Hochrechnung auf das ganze Projekt (Schätzung):** Die aufgezeichneten Sitzungen decken 16,8 Stunden aktive Arbeit ab (gleiche Zählweise wie oben: eine Pause von mehr als 60 Minuten beginnt einen neuen Block). Das sind rund 10,60 USD je Stunde. Auf die 58,8 h aktive Arbeitszeit des ganzen Projekts gerechnet ergibt das rund **623 USD**.
+**Hochrechnung auf das ganze Projekt (Schätzung):** Die aufgezeichneten Sitzungen decken 16,8 Stunden aktive Arbeit ab (gleiche Zählweise wie oben: eine Pause von mehr als 60 Minuten beginnt einen neuen Block). Das sind rund 10,60 USD je Stunde. Auf die 59,2 h aktive Arbeitszeit des ganzen Projekts gerechnet ergibt das rund **626 USD**.
 
 **Was diese Zahl nicht ist:** keine Rechnung. Die ersten drei Tage (13. bis 15.11.), mehrere spätere Arbeitsblöcke und die Gespräche außerhalb dieser Sitzungen sind auf dem PC nicht aufgezeichnet; für sie ist der Stundensatz der aufgezeichneten Sitzungen angenommen. Abgerechnet wurde das Projekt nicht je Token nach dieser Preisliste.
 
@@ -121,27 +121,29 @@ K9 wurde vollständig im Gespräch mit Claude (Claude Code) entwickelt. Die Tabe
 | Vorbereitung der Veröffentlichung begonnen (bereinigte Kopie ohne persönliche Angaben) | 23.11. 08:16 | 1,5 h | 1,5 h |
 | K9 auch auf Englisch: Dashboard, Meldefenster und Symbol im Infobereich, Sprachschalter im Dashboard (0.49.0) | 23.11. 09:45 | 0,4 h | 0,4 h |
 | Auch die Meldungen selbst erscheinen auf Englisch; Entscheidungen gelten in beiden Sprachen (0.50.0) | 23.11. 10:11 | 0,6 h | 0,6 h |
-| Englisches Dashboard vervollständigt (Sicherheits-Check, Quellen, Letzte Aktionen); Gesamttest prüft die englische Seite (0.50.1) | 23.11. 10:45 | 0,3 h | 0,3 h |
+| Englisches Dashboard vervollständigt (Sicherheits-Check, Quellen, Letzte Aktionen); Gesamttest prüft die englische Seite (0.50.1) | 23.11. 10:45 | 0,6 h | 0,3 h |
+| K9 auf GitHub veröffentlicht (bereinigte Kopie, Stand 0.50.1) | 23.11. 11:21 | 2,1 h | 0,3 h |
+| YARA-Treffer auf gültig signierte Dateien nur noch Mittel, kein Anhalten (0.50.2) | 23.11. 13:25 | 0,1 h | 0,1 h |
 
 ### Umfang des Programms
 
 | Bereich | Zeilen (Rust) |
 |---|---:|
-| k9-core | 30.556 |
+| k9-core | 30.611 |
 | k9-dienst | 5.463 |
 | k9-agent | 4.715 |
 | k9-cli | 2.365 |
 | k9-doc | 433 |
 | k9-res | 140 |
 | k9-testsim | 212 |
-| **gesamt** | **43.884** |
+| **gesamt** | **43.939** |
 
 | Angabe | Wert |
 |---|---:|
-| Automatische Einzeltests | 388 |
+| Automatische Einzeltests | 389 |
 | Prüfungen im End-zu-End-Test | 45 |
-| PowerShell-Skripte (Zeilen) | 4.511 |
-| Dokumentation (Markdown-Zeilen) | 6.258 |
+| PowerShell-Skripte (Zeilen) | 4.513 |
+| Dokumentation (Markdown-Zeilen) | 6.271 |
 | Seiten dieser Anleitung (vor dieser Änderung) | 111 |
 
 Feste Regel-Kennungen je Bereich (dazu kommen die Regeln aus YARA, ClamAV, den Hash- und Adresslisten sowie die Prozess-Regeln):
@@ -172,8 +174,8 @@ Feste Regel-Kennungen je Bereich (dazu kommen die Regeln aus YARA, ClamAV, den H
 | Erkennungsquellen aktiv / aktuell | 15 / 15 |
 | YARA-Regeln | 10.848 |
 | ClamAV-Signaturen | 3.642.950 |
-| Schadsoftware-Hashes | 1.226.397 |
-| Schad- und Phishing-Adressen | 210.912 |
+| Schadsoftware-Hashes | 1.227.019 |
+| Schad- und Phishing-Adressen | 212.016 |
 | CISA-KEV-Einträge | 1.790 |
 
 ### Messungen (aus dem Testbericht)
@@ -263,24 +265,24 @@ Insgesamt **200** Erkennungen.
 
 | Art | Anzahl |
 |---|---:|
-| Verdächtiger Prozess | 175 |
-| Datei | 15 |
-| Hinweis | 6 |
+| Verdächtiger Prozess | 179 |
+| Datei | 14 |
+| Hinweis | 4 |
 | Browser-Erweiterung | 2 |
-| Autostart | 2 |
+| Autostart | 1 |
 
 | Schwere | Anzahl |
 |---|---:|
-| Mittel | 157 |
-| Hoch | 31 |
-| Kritisch | 4 |
-| Niedrig | 4 |
-| Info | 4 |
+| Mittel | 163 |
+| Hoch | 26 |
+| Kritisch | 5 |
+| Niedrig | 3 |
+| Info | 3 |
 
 | Status | Anzahl |
 |---|---:|
-| entschieden | 194 |
-| automatisch | 6 |
+| entschieden | 190 |
+| automatisch | 10 |
 
 Erkannte und behobene Fehlalarme (seit 14.11. abends erfasst): 5 Ursachen, 18 Meldungen – Firefox-eigene Erweiterungen (5) und Suchmaschinen (6), Test-Agent des End-zu-End-Tests las echte Browserordner (3), Temp-Dateien von clamd beim Test (2), leere Chrome-Registry-Einträge (2, jetzt nur Info). Alle Ursachen sind behoben und durch Tests abgesichert.
 

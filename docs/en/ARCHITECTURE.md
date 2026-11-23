@@ -1,6 +1,6 @@
 # Architecture
 
-State: version 0.50.1 (23 November 2026). The module tables below are taken from the one-line
+State: version 0.50.2 (23 November 2026). The module tables below are taken from the one-line
 descriptions at the top of each source file.
 
 ## Overview

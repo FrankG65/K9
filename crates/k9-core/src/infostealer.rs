@@ -336,7 +336,9 @@ mod tests {
         assert!(lists_folder(&wallet), "Ordner (endet mit \\): nur aufgelistet");
         let inside = format!("{wallet}000005.ldb");
         assert_eq!(group_of(&inside).unwrap().id, "wallet");
-        assert!(!lists_folder(&inside), "Datei im Ordner: wird weiter gemeldet");
+        // "A file inside is still reported" is checked below with neutral names: asking the file
+        // system about a wallet path would itself be reported by the installed K9 (findings
+        // #429-#450 of 23.11.2026 came from this test).
         // The real stores are still recognised, a file that only contains the name is not.
         assert_eq!(group_of(&format!(r"{base}\BraveSoftware\Brave-Browser\User Data\Default\Network\Cookies")).unwrap().id, "brave");
         assert!(group_of(&format!(r"{base}\Google\Chrome\User Data\Default\Network\Cookies Backup\alt.txt")).is_none());

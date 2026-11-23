@@ -67,6 +67,24 @@ fn severity_from_score(score: i64) -> Severity {
     }
 }
 
+/// A YARA hit on a validly signed file: still reported, but at most "mittel" and therefore never
+/// frozen at its start (`anhalten::known_malware_at_start` needs "hoch"). Rules for loaders
+/// and packers also fit signed installers and launchers (GitHub Desktop, 23.11.2026, finding
+/// #446). Malware with a stolen certificate is still reported – as "mittel".
+pub fn tone_down_signed(f: &mut Finding) {
+    if f.severity > Severity::Mittel {
+        f.severity = Severity::Mittel;
+    }
+    f.threat_name = tf!(
+        "{} (Datei gültig digital signiert – vermutlich Fehlalarm, bitte prüfen)",
+        "{} (file validly digitally signed – probably a false alarm, please check)",
+        f.threat_name
+    );
+    if let Some(d) = f.details.as_mut().and_then(|d| d.as_object_mut()) {
+        d.insert("signiert".into(), true.into());
+    }
+}
+
 impl FileSession for YaraSession<'_> {
     fn finish(self: Box<Self>, meta: &FileMeta, sha256: &str) -> Vec<Finding> {
         let mut scanner = yara_x::Scanner::new(&self.engine.rules);
@@ -79,6 +97,8 @@ impl FileSession for YaraSession<'_> {
             }
         };
         let mut out = Vec::new();
+        // Checked once per file and only when a rule matched (costs a few milliseconds).
+        let mut signed: Option<bool> = None;
         for rule in results.matching_rules() {
             let mut score: Option<i64> = None;
             let mut description = String::new();
@@ -99,7 +119,7 @@ impl FileSession for YaraSession<'_> {
             } else {
                 format!("YARA: {} – {}", rule.identifier(), description.chars().take(120).collect::<String>())
             };
-            out.push(Finding {
+            let mut f = Finding {
                 path: meta.path.clone(),
                 sha256: sha256.to_string(),
                 size: meta.size,
@@ -110,7 +130,11 @@ impl FileSession for YaraSession<'_> {
                 engine: "yara".into(),
                 kind: Kind::Datei,
                 details: Some(serde_json::json!({ "score": score })),
-            });
+            };
+            if *signed.get_or_insert_with(|| crate::autostart::is_signed(&meta.path)) {
+                tone_down_signed(&mut f);
+            }
+            out.push(f);
         }
         out
     }
@@ -169,6 +193,35 @@ mod tests {
     fn scan(engine: &YaraEngine, path: &Path) -> Vec<Finding> {
         let meta = FileMeta { path: path.to_path_buf(), size: std::fs::metadata(path).unwrap().len() };
         engine.begin(&meta).unwrap().finish(&meta, "00")
+    }
+
+    #[test]
+    fn a_hit_on_a_signed_file_is_medium_and_never_frozen() {
+        let mut f = Finding {
+            path: "C:\\x\\GitHubDesktop.exe".into(),
+            sha256: "ab".into(),
+            size: 1,
+            rule_id: "YARA:default:CAPE_Hijackloaderstub".into(),
+            threat_name: "YARA: CAPE_Hijackloaderstub".into(),
+            category: crate::model::category::MALWARE.into(),
+            severity: Severity::Kritisch,
+            engine: "yara".into(),
+            kind: Kind::Datei,
+            details: Some(serde_json::json!({ "score": 100 })),
+        };
+        assert!(crate::anhalten::known_malware_at_start(&f));
+        let fingerprint = (f.sha256.clone(), f.rule_id.clone());
+        tone_down_signed(&mut f);
+        assert_eq!(f.severity, Severity::Mittel);
+        assert!(!crate::anhalten::known_malware_at_start(&f), "signiert: wird nicht angehalten");
+        assert!(f.threat_name.contains("gültig digital signiert"), "{}", f.threat_name);
+        assert_eq!(f.details.as_ref().unwrap()["signiert"], true);
+        // Same identity: a decision made before still fits.
+        assert_eq!((f.sha256.clone(), f.rule_id.clone()), fingerprint);
+        // A low hit stays low.
+        let mut low = Finding { severity: Severity::Niedrig, ..f.clone() };
+        tone_down_signed(&mut low);
+        assert_eq!(low.severity, Severity::Niedrig);
     }
 
     #[test]

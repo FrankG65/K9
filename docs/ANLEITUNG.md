@@ -1401,6 +1401,16 @@ Alles andere meldet K9 wie bisher laut – jede Datei mit Internet-Kennzeichnung
 Datei außerhalb von Windows, jede frische Datei in einem Benutzerordner. Bekannte Schadsoftware aus
 den Hashlisten und ClamAV-Treffer sind von dieser Regel nicht betroffen.
 
+**Gültig signierte Dateien (seit Version 0.50.2):** Trifft eine YARA-Regel eine Datei mit gültiger
+digitaler Signatur, meldet K9 sie **höchstens als „Mittel“** und hängt an den Namen
+„(Datei gültig digital signiert – vermutlich Fehlalarm, bitte prüfen)“. Eine solche Datei wird beim
+Start **nicht mehr angehalten** – angehalten werden nur noch Treffer ab „Hoch“. Anlass war Meldung 446
+vom 23.11.2026: Die Regel „CAPE_Hijackloaderstub“ hielt das Startprogramm von GitHub Desktop an, das
+gültig von „GitHub, Inc.“ signiert ist. Regeln für Lade- und Packprogramme passen leider auch auf
+harmlose Startprogramme und Installer. Gemeldet wird trotzdem weiter, denn Schadsoftware ist
+manchmal mit einem gestohlenen Zertifikat signiert. Bei den Hashlisten gilt dasselbe schon länger
+(dort „Niedrig“ mit dem Hinweis „vermutlich Fehleintrag“).
+
 **Das erweiterte Paket einschalten** (Standard: aus):
 
 ```powershell
@@ -2896,6 +2906,7 @@ cd "C:\Program Files\K9"
 
 | Datum | Änderung |
 |---|---|
+| 23.11.2026 | **Version 0.50.2:** YARA-Treffer auf gültig digital signierte Dateien werden höchstens als „Mittel“ gemeldet (mit dem Hinweis „vermutlich Fehlalarm, bitte prüfen“) und beim Start nicht mehr angehalten. Anlass: Meldung 446 – die Regel „CAPE_Hijackloaderstub“ hielt das von GitHub, Inc. signierte Startprogramm von GitHub Desktop an. Gemeldet werden solche Treffer weiterhin. Außerdem fragt ein Test von K9 keinen Wallet-Pfad mehr beim Dateisystem ab (er hatte die leisen Meldungen „liest Krypto-Wallet“ 429 bis 450 ausgelöst). Teil 3, „YARA-Regeln“, ergänzt. |
 | 23.11.2026 | **Version 0.50.1:** Englisches Dashboard vervollständigt: Die Punkte des Sicherheits-Checks, „Letzte Aktionen“, die Namen, Lizenzen und der Stand der Erkennungsquellen, der Status in „Letzte Erkennungen“, die Stufe im „Protokoll“ und der Grund des Spielmodus erscheinen jetzt auch auf Englisch (vorher waren nur die Überschriften übersetzt). Beim Umschalten prüft K9 den Sicherheits-Check sofort neu. Fehler behoben: Der Sprachschalter funktionierte nicht, wenn die `config.toml` mit einem Byte-Order-Mark gespeichert war (so speichern der Windows-Editor und PowerShell 5). Der Gesamttest prüft jetzt auch die englische Seite. |
 | 23.11.2026 | **Version 0.50.0:** Englische Fassung, zweiter Teil: Jetzt erscheinen auch die Meldungen selbst auf Englisch (Name der Bedrohung, Fundort, Kategorie, Hinweis mit Empfehlung, „Betrifft“) – für alle Erkennungen von Agent und Dienst –, dazu die Bestätigungsfenster des Dienstes, die Benachrichtigungen per Windows-Popup, E-Mail und Handy und der Wochenbericht. Der Dienst übernimmt eine geänderte Sprache innerhalb von 30 Sekunden ohne Neustart. Gespeicherte Entscheidungen gelten in beiden Sprachen (der Fingerabdruck einer Meldung hängt nicht von der Sprache ab). Deutsch bleiben die Ausgabe der `k9`-Befehle, das Protokoll und Fehlertexte. Für deutsche Nutzer ändert sich nichts. |
 | 23.11.2026 | **Version 0.49.0:** K9 gibt es jetzt auch auf Englisch. Neue Einstellung `sprache` (`auto`, `de`, `en`; Voreinstellung `auto` = Anzeigesprache von Windows) und Sprachschalter oben rechts im Dashboard („Sprache: Deutsch English“, wirkt sofort) und neuer Befehl `.\k9.exe sprache en` (ebenso `de` und `auto`). Auf Englisch erscheinen das ganze Dashboard, das Meldefenster, die Entscheidungen, der Sicherheits-Check, die Texte zum Aktualisieren von Programmen und das Symbol im Infobereich. Vorerst deutsch bleiben der Text der Meldungen selbst, die Ausgabe der `k9`-Befehle, das Protokoll und die Anleitung. Neuer Abschnitt „Sprache: Deutsch oder Englisch“ in Teil 2. Für deutsche Nutzer ändert sich nichts. |

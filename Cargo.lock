@@ -1669,7 +1669,7 @@ dependencies = [
 
 [[package]]
 name = "k9-agent"
-version = "0.50.1"
+version = "0.50.2"
 dependencies = [
  "anyhow",
  "axum",
@@ -1689,7 +1689,7 @@ dependencies = [
 
 [[package]]
 name = "k9-cli"
-version = "0.50.1"
+version = "0.50.2"
 dependencies = [
  "anyhow",
  "chrono",
@@ -1706,7 +1706,7 @@ dependencies = [
 
 [[package]]
 name = "k9-core"
-version = "0.50.1"
+version = "0.50.2"
 dependencies = [
  "anyhow",
  "chrono",
@@ -1736,7 +1736,7 @@ dependencies = [
 
 [[package]]
 name = "k9-dienst"
-version = "0.50.1"
+version = "0.50.2"
 dependencies = [
  "anyhow",
  "k9-core",
@@ -1751,18 +1751,18 @@ dependencies = [
 
 [[package]]
 name = "k9-doc"
-version = "0.50.1"
+version = "0.50.2"
 dependencies = [
  "pulldown-cmark",
 ]
 
 [[package]]
 name = "k9-res"
-version = "0.50.1"
+version = "0.50.2"
 
 [[package]]
 name = "k9-testsim"
-version = "0.50.1"
+version = "0.50.2"
 
 [[package]]
 name = "keyring"
