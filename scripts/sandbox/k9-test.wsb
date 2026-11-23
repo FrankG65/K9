@@ -1,0 +1,34 @@
+<!--
+  Windows-Sandbox fuer die Tests von K9 (Entwurf, siehe docs\SANDBOX-TESTPLAN.md).
+  Start: Doppelklick auf diese Datei (nach dem Einschalten der Funktion "Windows-Sandbox").
+  Alles in der Sandbox wird beim Schliessen verworfen.
+  Nur zwei Ordner sind verbunden:
+    testlabor\sandbox -> C:\Testlabor (nur lesen: unsere drei Programme und harmlose Testdateien)
+    Dokumente\Virenscanner-Sandbox-Ergebnis -> C:\Ergebnis (schreiben: nur Textberichte;
+      bewusst NICHT im von Trend Micro ausgenommenen Projektordner - Trend Micro und der
+      eigene Echtzeitschutz pruefen alles, was dort ankommt)
+  Kein Netzwerk, keine Zwischenablage, keine Grafikbeschleunigung, kein Mikrofon/Kamera/Drucker.
+  Fuer Tests mit Downloads gibt es k9-test-online.wsb (nur Networking anders).
+-->
+<Configuration>
+  <vGPU>Disable</vGPU>
+  <Networking>Disable</Networking>
+  <ClipboardRedirection>Disable</ClipboardRedirection>
+  <AudioInput>Disable</AudioInput>
+  <VideoInput>Disable</VideoInput>
+  <PrinterRedirection>Disable</PrinterRedirection>
+  <ProtectedClient>Enable</ProtectedClient>
+  <MemoryInMB>4096</MemoryInMB>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>C:\K9-Quelltext\testlabor\sandbox</HostFolder>
+      <SandboxFolder>C:\Testlabor</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+    <MappedFolder>
+      <HostFolder>C:\Users\anna\Documents\Virenscanner-Sandbox-Ergebnis</HostFolder>
+      <SandboxFolder>C:\Ergebnis</SandboxFolder>
+      <ReadOnly>false</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+</Configuration>

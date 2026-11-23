@@ -1,0 +1,4 @@
+# Link the C runtime statically: the programs then run on every Windows, also
+# without the Visual C++ package (e.g. in a fresh Windows Sandbox).
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]

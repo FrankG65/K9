@@ -1,0 +1,24 @@
+[package]
+name = "k9-dienst"
+description = "Windows-Dienst von K9: Prozess- und DNS-Überwachung (ETW), Agent-Wache, Aktionen mit Administratorrechten"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "k9-dienst"
+path = "src/main.rs"
+
+[dependencies]
+k9-core.workspace = true
+anyhow.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-appender.workspace = true
+windows.workspace = true
+windows-service.workspace = true
+
+[build-dependencies]
+k9-res.workspace = true

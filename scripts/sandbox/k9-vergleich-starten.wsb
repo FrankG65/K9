@@ -1,0 +1,29 @@
+<!--
+  Vergleichstest MIT GESTARTETEN Proben (sandbox-vergleich.ps1 -Starten). Kein beschreibbarer
+  Ordner zum PC: Ergebnisse bleiben auf dem Desktop der Sandbox (abschreiben/ansehen, dann schliessen). Netzwerk an,
+  weil die Sandbox die Proben selbst laedt; das Skript schaltet den Netzwerkadapter ab, BEVOR es
+  entpackt. Proben erreichen den PC nie: der Testordner ist nur lesbar,
+  einen Ergebnisordner zum PC gibt es hier nicht. Nur mit Zustimmung des Nutzers fuer genau diesen Tag
+  (testlabor\sandbox\vergleich\ZUSTIMMUNG.txt). Siehe docs\SANDBOX-TESTPLAN.md.
+-->
+<Configuration>
+  <vGPU>Disable</vGPU>
+  <Networking>Enable</Networking>
+  <ClipboardRedirection>Disable</ClipboardRedirection>
+  <AudioInput>Disable</AudioInput>
+  <VideoInput>Disable</VideoInput>
+  <PrinterRedirection>Disable</PrinterRedirection>
+  <ProtectedClient>Enable</ProtectedClient>
+  <MemoryInMB>4096</MemoryInMB>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>C:\K9-Quelltext\testlabor\sandbox</HostFolder>
+      <SandboxFolder>C:\Testlabor</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+  <!-- Startet den Test mit GESTARTETEN Proben von selbst in einem sichtbaren Fenster (20 Proben). -->
+  <LogonCommand>
+    <Command>cmd.exe /c start "K9-Vergleichstest (Proben werden gestartet)" powershell.exe -NoExit -ExecutionPolicy Bypass -File C:\Testlabor\sandbox-vergleich.ps1 -Anzahl 20 -Starten</Command>
+  </LogonCommand>
+</Configuration>

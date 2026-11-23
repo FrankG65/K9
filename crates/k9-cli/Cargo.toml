@@ -1,0 +1,26 @@
+[package]
+name = "k9-cli"
+description = "Kommandozeile von K9 (k9)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "k9"
+path = "src/main.rs"
+
+[dependencies]
+k9-core.workspace = true
+anyhow.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+clap.workspace = true
+rpassword.workspace = true
+windows.workspace = true
+windows-service.workspace = true
+
+[build-dependencies]
+k9-res.workspace = true

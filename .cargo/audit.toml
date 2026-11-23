@@ -1,0 +1,11 @@
+# cargo audit – begründete Ausnahmen (siehe docs/ARCHITEKTUR.md, Abschnitt Sicherheit)
+[advisories]
+ignore = [
+    # rsa 0.10.0-rc.19 "Marvin Attack" (Timing-Seitenkanal beim RSA-Entschlüsseln
+    # mit privatem Schlüssel). rsa kommt nur über yara-x (PE-Modul: Prüfen von
+    # Authenticode-Signaturen in gescannten Dateien = öffentliche Schlüssel).
+    # K9 entschlüsselt nie mit privaten Schlüsseln -> nicht ausnutzbar.
+    # yara-x 1.23 (neueste Version) lässt sich nicht mit dem gepatchten rsa 0.10.0
+    # bauen. Bei jedem yara-x-Update erneut prüfen und Ausnahme entfernen.
+    "RUSTSEC-2023-0071",
+]

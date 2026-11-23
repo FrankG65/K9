@@ -1,0 +1,33 @@
+<!--
+  Vergleichstest mit echter Schadsoftware (scripts\sandbox\sandbox-vergleich.ps1). Netzwerk an,
+  weil die Sandbox die Proben selbst laedt; das Skript schaltet den Netzwerkadapter ab, BEVOR es
+  entpackt. Proben erreichen den PC nie: der Testordner ist nur lesbar, in den Ergebnisordner
+  kommen nur Textdateien. Nur mit Zustimmung des Nutzers fuer genau diesen Tag
+  (testlabor\sandbox\vergleich\ZUSTIMMUNG.txt). Siehe docs\SANDBOX-TESTPLAN.md.
+-->
+<Configuration>
+  <vGPU>Disable</vGPU>
+  <Networking>Enable</Networking>
+  <ClipboardRedirection>Disable</ClipboardRedirection>
+  <AudioInput>Disable</AudioInput>
+  <VideoInput>Disable</VideoInput>
+  <PrinterRedirection>Disable</PrinterRedirection>
+  <ProtectedClient>Enable</ProtectedClient>
+  <MemoryInMB>4096</MemoryInMB>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>C:\K9-Quelltext\testlabor\sandbox</HostFolder>
+      <SandboxFolder>C:\Testlabor</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+    <MappedFolder>
+      <HostFolder>C:\Users\anna\Documents\Virenscanner-Sandbox-Ergebnis</HostFolder>
+      <SandboxFolder>C:\Ergebnis</SandboxFolder>
+      <ReadOnly>false</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+  <!-- Startet den Test von selbst in einem sichtbaren Fenster (nur lesender Testordner, Skript prueft die Zustimmung). -->
+  <LogonCommand>
+    <Command>cmd.exe /c start "K9-Vergleichstest" powershell.exe -NoExit -ExecutionPolicy Bypass -File C:\Testlabor\sandbox-vergleich.ps1 -Anzahl 30</Command>
+  </LogonCommand>
+</Configuration>

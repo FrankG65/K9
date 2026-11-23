@@ -1,0 +1,35 @@
+[package]
+name = "k9-core"
+description = "Kernbibliothek von K9: Konfiguration, Erkennung, Entscheidungen, Quarantäne, Gaming-Modus, Meldungen"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+thiserror.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+rusqlite.workspace = true
+sha2.workspace = true
+hex.workspace = true
+ring.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+getrandom.workspace = true
+memchr.workspace = true
+walkdir.workspace = true
+keyring.workspace = true
+lettre.workspace = true
+reqwest.workspace = true
+windows.workspace = true
+yara-x.workspace = true
+zip.workspace = true
+flate2.workspace = true
+yaml-rust2 = "0.13.1"
+regex = "1.13.2"
+
+[dev-dependencies]
+tempfile.workspace = true

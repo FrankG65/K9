@@ -1,0 +1,9 @@
+[package]
+name = "k9-res"
+description = "Build-Helfer: bettet das K9-Programmsymbol (pictures/k9.ico) als Windows-Ressource ein"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]

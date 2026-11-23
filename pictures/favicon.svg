@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64" width="256" height="256">
+  <title>K9</title>
+  <rect x="3" y="3" width="58" height="58" rx="14" fill="#15171C"/>
+  <ellipse cx="32" cy="43" rx="14" ry="11" fill="#FF6B00"/>
+  <ellipse cx="16.5" cy="29" rx="5.2" ry="6.8" transform="rotate(-22 16.5 29)" fill="#FF6B00"/>
+  <ellipse cx="26" cy="18.5" rx="5.2" ry="7" transform="rotate(-8 26 18.5)" fill="#FF6B00"/>
+  <ellipse cx="38" cy="18.5" rx="5.2" ry="7" transform="rotate(8 38 18.5)" fill="#FF6B00"/>
+  <ellipse cx="47.5" cy="29" rx="5.2" ry="6.8" transform="rotate(22 47.5 29)" fill="#FF6B00"/>
+</svg>

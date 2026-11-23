@@ -1,0 +1,31 @@
+<!--
+  Messung "Wie schnell ist K9 bei Ransomware?" (sandbox-test-ransomware-sim.ps1). Ohne Netzwerk,
+  nur das harmlose Testprogramm k9-testsim.exe, keine Schadsoftware. Der Test startet von selbst
+  (etwa 8 Minuten), die Sandbox schliesst sich danach. Ergebnisse:
+  Dokumente\Virenscanner-Sandbox-Ergebnis\ransomware-sim. Siehe docs\SANDBOX-TESTPLAN.md.
+-->
+<Configuration>
+  <vGPU>Disable</vGPU>
+  <Networking>Disable</Networking>
+  <ClipboardRedirection>Disable</ClipboardRedirection>
+  <AudioInput>Disable</AudioInput>
+  <VideoInput>Disable</VideoInput>
+  <PrinterRedirection>Disable</PrinterRedirection>
+  <ProtectedClient>Enable</ProtectedClient>
+  <MemoryInMB>4096</MemoryInMB>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>C:\K9-Quelltext\testlabor\sandbox</HostFolder>
+      <SandboxFolder>C:\Testlabor</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+    <MappedFolder>
+      <HostFolder>C:\Users\anna\Documents\Virenscanner-Sandbox-Ergebnis</HostFolder>
+      <SandboxFolder>C:\Ergebnis</SandboxFolder>
+      <ReadOnly>false</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+  <LogonCommand>
+    <Command>cmd.exe /c start "K9-Test: Wie schnell bei Ransomware (harmlos)" powershell.exe -NoExit -ExecutionPolicy Bypass -File C:\Testlabor\sandbox-test-ransomware-sim.ps1</Command>
+  </LogonCommand>
+</Configuration>

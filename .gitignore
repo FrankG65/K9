@@ -1,0 +1,9 @@
+/target/
+/tools/k9-bilder/target/
+*.log
+*.db
+*.db-wal
+*.db-shm
+*.vsq
+/testlabor/
+/crates/*/target/

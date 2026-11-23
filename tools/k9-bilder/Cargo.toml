@@ -1,0 +1,12 @@
+[package]
+name = "k9-bilder"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Entwicklerwerkzeug: erzeugt aus pictures/*.svg die PNG- und ICO-Dateien von K9 (nicht Teil der Installation)"
+
+# Eigener Arbeitsbereich: gehoert nicht zum Produkt-Build.
+[workspace]
+
+[dependencies]
+resvg = { version = "0.45", default-features = false }

@@ -1,0 +1,10 @@
+[package]
+name = "k9-doc"
+description = "Hilfsprogramm: wandelt docs/ANLEITUNG.md in druckfertiges HTML (für die PDF-Anleitung)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+pulldown-cmark = { version = "0.13", default-features = false, features = ["html"] }

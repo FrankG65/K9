@@ -1,0 +1,30 @@
+[package]
+name = "k9-agent"
+description = "Hintergrund-Agent von K9: Zeitplan, Gaming-Modus, Meldungen, lokales Dashboard"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "k9-agent"
+path = "src/main.rs"
+
+[dependencies]
+k9-core.workspace = true
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+walkdir.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-appender.workspace = true
+tokio.workspace = true
+axum.workspace = true
+clap.workspace = true
+windows.workspace = true
+
+[build-dependencies]
+chrono.workspace = true
+k9-res.workspace = true

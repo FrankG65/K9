@@ -1,0 +1,9 @@
+[package]
+name = "k9-testsim"
+description = "Nur für Tests: überschreibt Schein-Dateien in einem markierten Testordner so schnell wie Ransomware (harmlos, wird nicht installiert)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]

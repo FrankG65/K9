@@ -1,0 +1,14 @@
+#!/bin/sh
+# Haelt docs/Anleitung-K9.pdf bei jedem Commit aktuell.
+changed=$(git diff --cached --name-only)
+
+if echo "$changed" | grep -qE '^(crates/|K9 starten\.cmd)' && ! echo "$changed" | grep -q '^docs/ANLEITUNG\.md'; then
+    echo "Hinweis: Programmcode geaendert, docs/ANLEITUNG.md aber nicht. Bitte Anleitung und Aenderungsverlauf pruefen."
+fi
+
+echo "Erzeuge PDF-Anleitung ..."
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/anleitung-pdf.ps1 || {
+    echo "PDF-Anleitung konnte nicht erzeugt werden - Commit abgebrochen."
+    exit 1
+}
+git add docs/Anleitung-K9.pdf
