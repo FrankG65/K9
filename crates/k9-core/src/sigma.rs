@@ -211,8 +211,10 @@ impl Prepared {
             (p.to_lowercase(), p)
         };
         // A bare file name is written as `\name.exe`: the rules compare the end of the path.
+        // Windows also accepts `/` in a program path (OBS starts `C:/OBS/bin/64bit/…`, #558,
+        // 24.11.2026); the rules compare with `\`, so the path is written the Windows way.
         let program = |s: &str| {
-            let p = plain(s);
+            let p = plain(s).replace('/', "\\");
             let p = if p.is_empty() || has_folder(&p) || p.starts_with('\\') { p } else { format!("\\{p}") };
             (has_folder(&p), (p.to_lowercase(), p))
         };
@@ -968,6 +970,7 @@ mod tests {
         assert!(!fires(&no_path, "git.exe", "\"git.exe\" --exec-path", "\\cargo.exe"), "unbekannter Ordner ist kein fehlender Ordner");
         assert!(!fires(&no_path, "\\git.exe", "x", ""));
         assert!(!fires(&no_path, "C:\\Program Files\\Git\\cmd\\git.exe", "x", ""));
+        assert!(!fires(&no_path, "C:/OBS/bin/64bit/obs-nvenc-test.exe", "C:/OBS/bin/64bit/obs-nvenc-test.exe", "C:\\OBS\\bin\\64bit\\obs64.exe"), "Pfad mit / ist ein Pfad (#558)");
         // A system file name outside the Windows folders – undecided without the folder.
         let place = rule("    selection:\n        Image|endswith: '\\whoami.exe'\n    filter:\n        Image|startswith: 'C:\\Windows\\System32\\'\n    condition: selection and not filter");
         assert!(!fires(&place, "whoami.exe", "whoami", ""));

@@ -236,7 +236,11 @@ pub fn is_browser_cache(path: &Path) -> bool {
         })
     });
     let name = path.file_name().map(|n| n.to_string_lossy().to_ascii_lowercase()).unwrap_or_default();
-    in_cache_dir || name.starts_with("variationsseed")
+    // Edge keeps its session and tab state encrypted (`Sessions_Encrypted\Session_<n>`,
+    // `Tabs_<n>`); a headless Edge started by a program writes them at once (#528, 23.11.2026).
+    let in_session_dir = path.parent().and_then(|d| d.file_name()).is_some_and(|d| d.eq_ignore_ascii_case("sessions_encrypted"));
+    let session_file = in_session_dir && (name.starts_with("session_") || name.starts_with("tabs_"));
+    in_cache_dir || session_file || name.starts_with("variationsseed")
 }
 
 /// Git writes compressed data by the hundred (every commit, diff, checkout). Decided by the
@@ -1295,6 +1299,11 @@ mod tests {
         assert!(is_browser_cache(&p("C:\\T\\msedge_url_fetcher_61300_2008560990\\4c1d5cd5-b559")));
         assert!(!is_browser_cache(&p("C:\\Users\\x\\Documents\\Vertrag.docx.locked")));
         assert!(!is_browser_cache(&p("C:\\Users\\x\\Documents\\Cache_Data")), "nur Dateien in einem Cache-Ordner");
+        // #528 (23.11.2026): headless Edge writes its encrypted session state.
+        assert!(is_browser_cache(&p("C:\\Users\\x\\AppData\\Local\\Temp\\HeadlessEdge66\\Default\\Sessions_Encrypted\\Session_13439939139402752")));
+        assert!(is_browser_cache(&p("C:\\T\\Default\\Sessions_Encrypted\\Tabs_13439939139478433")));
+        assert!(!is_browser_cache(&p("C:\\Users\\x\\Documents\\Sessions_Encrypted\\Vertrag.docx")), "nur Edges eigene Sitzungsdateien");
+        assert!(!is_browser_cache(&p("C:\\Users\\x\\Documents\\Session_1.txt")));
     }
 
     #[test]

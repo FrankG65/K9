@@ -1,6 +1,6 @@
 # Architektur
 
-Stand: Version 0.50.2 (23.11.2026). Die Modultabellen stammen aus den einzeiligen Beschreibungen
+Stand: Version 0.50.3 (24.11.2026). Die Modultabellen stammen aus den einzeiligen Beschreibungen
 am Anfang jeder Quelldatei.
 
 ## Überblick

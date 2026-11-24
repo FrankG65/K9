@@ -8,4 +8,10 @@ ignore = [
     # yara-x 1.23 (neueste Version) lässt sich nicht mit dem gepatchten rsa 0.10.0
     # bauen. Bei jedem yara-x-Update erneut prüfen und Ausnahme entfernen.
     "RUSTSEC-2023-0071",
+    # url 2.5.8: Stapelueberlauf in `Url::origin()` bei verschachtelten `blob:`-Adressen
+    # (gemeldet 20.11.2026, noch keine behobene Version). url kommt nur ueber reqwest,
+    # lettre und tower-http; keines davon und kein K9-Code ruft `origin()` auf (geprueft
+    # 24.11.2026 per grep in den Quellen). K9 laedt nur http(s)-Adressen fester Quellen.
+    # Entfernen, sobald url eine behobene Version hat.
+    "RUSTSEC-2026-0592",
 ]

@@ -3,7 +3,7 @@ resolver = "2"
 members = ["crates/k9-core", "crates/k9-agent", "crates/k9-cli", "crates/k9-dienst", "crates/k9-doc", "crates/k9-res", "crates/k9-testsim"]
 
 [workspace.package]
-version = "0.50.2"
+version = "0.50.3"
 edition = "2021"
 license = "MIT"
 publish = false

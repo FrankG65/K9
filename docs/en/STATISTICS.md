@@ -1,6 +1,6 @@
 # Project statistics
 
-English summary of `docs/STATISTIK.md`, state at publication (23 November 2026, 13:23). Times and
+English summary of `docs/STATISTIK.md`, state at publication (24 November 2026, 05:18). Times and
 commit counts come from the version history of the development PC, which is not published. The
 German file additionally lists every milestone, the duration of each development step and every
 test run in Windows Sandbox.
@@ -10,10 +10,10 @@ test run in Windows Sandbox.
 | Item | Value |
 |---|---|
 | Project start | 13 November 2026, 09:59 |
-| Last change | 23 November 2026, 13:23 |
-| Calendar time | 243.4 h |
-| Active working time (estimate) | 59.1 h in 52 working blocks |
-| Commits | 240 |
+| Last change | 24 November 2026, 05:18 |
+| Calendar time | 259.3 h |
+| Active working time (estimate) | 59.2 h in 53 working blocks |
+| Commits | 242 |
 
 How the active time is estimated: commits and milestones are grouped into working blocks; a pause
 of more than 60 minutes starts a new block. Work before the first event of a block is not
@@ -54,7 +54,7 @@ session logs on the test PC recorded: 891 requests from 8 sessions between 16 an
 
 **Extrapolation to the whole project (estimate):** the recorded sessions cover 16.8 hours of
 active work (counted the same way as above). That is about 10.60 USD per hour. Applied to the
-59.1 hours of active working time of the whole project, this gives about **625 USD**.
+59.2 hours of active working time of the whole project, this gives about **626 USD**.
 
 **What this number is not:** it is not an invoice. The first three days (13 to 15 November),
 several later working blocks and the conversations outside these sessions are not recorded on the
@@ -65,21 +65,21 @@ token at this price list.
 
 | Crate | Lines (Rust) |
 |---|---:|
-| k9-core | 30,611 |
+| k9-core | 30,623 |
 | k9-dienst | 5,463 |
 | k9-agent | 4,715 |
 | k9-cli | 2,365 |
 | k9-doc | 433 |
 | k9-res | 140 |
 | k9-testsim | 212 |
-| **total** | **43,939** |
+| **total** | **43,951** |
 
 | Item | Value |
 |---|---:|
 | Automated unit tests | 389 |
 | Checks in the end-to-end test | 45 |
-| PowerShell scripts (lines) | 4,513 |
-| Documentation (Markdown lines) | 6,269 |
+| PowerShell scripts (lines) | 4,514 |
+| Documentation (Markdown lines) | 6,271 |
 | Pages of the German manual | 111 |
 
 ## Detection data on the test PC
@@ -89,7 +89,7 @@ token at this price list.
 | Detection sources active / up to date | 15 / 15 |
 | YARA rules | 10,848 |
 | ClamAV signatures | 3,642,950 |
-| Malware hashes | 1,227,019 |
+| Malware hashes | 1,227,362 |
 | Malicious and phishing addresses | 212,016 |
 | CISA KEV entries | 1,790 |
 

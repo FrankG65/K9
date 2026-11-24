@@ -1,16 +1,16 @@
 # Projektstatistik
 
-Stand: 23.11.2026 13:28. Diese Seite zeigt den Stand bei der Veröffentlichung. Zeiten und Commits stammen aus der Versionsgeschichte des Entwicklungs-PCs, die nicht mit veröffentlicht ist.
+Stand: 24.11.2026 05:18. Diese Seite zeigt den Stand bei der Veröffentlichung. Zeiten und Commits stammen aus der Versionsgeschichte des Entwicklungs-PCs, die nicht mit veröffentlicht ist.
 
 ### Zeitraum
 
 | Angabe | Wert |
 |---|---|
 | Projektstart | 13.11.2026 09:59 Uhr |
-| Letzte Änderung | 23.11.2026 13:28 Uhr |
-| Kalenderzeit | 243,5 h |
-| Aktive Arbeitszeit (Schätzung) | 59,2 h in 52 Arbeitsblöcken |
-| Commits | 241 |
+| Letzte Änderung | 24.11.2026 05:18 Uhr |
+| Kalenderzeit | 259,3 h |
+| Aktive Arbeitszeit (Schätzung) | 59,2 h in 53 Arbeitsblöcken |
+| Commits | 242 |
 
 Schätzung der aktiven Zeit: Commits und Meilensteine werden zu Arbeitsblöcken zusammengefasst; eine Pause von mehr als 60 Minuten beginnt einen neuen Block. Arbeit vor dem ersten Ereignis eines Blocks ist nicht enthalten.
 
@@ -123,26 +123,27 @@ K9 wurde vollständig im Gespräch mit Claude (Claude Code) entwickelt. Die Tabe
 | Auch die Meldungen selbst erscheinen auf Englisch; Entscheidungen gelten in beiden Sprachen (0.50.0) | 23.11. 10:11 | 0,6 h | 0,6 h |
 | Englisches Dashboard vervollständigt (Sicherheits-Check, Quellen, Letzte Aktionen); Gesamttest prüft die englische Seite (0.50.1) | 23.11. 10:45 | 0,6 h | 0,3 h |
 | K9 auf GitHub veröffentlicht (bereinigte Kopie, Stand 0.50.1) | 23.11. 11:21 | 2,1 h | 0,3 h |
-| YARA-Treffer auf gültig signierte Dateien nur noch Mittel, kein Anhalten (0.50.2) | 23.11. 13:25 | 0,1 h | 0,1 h |
+| YARA-Treffer auf gültig signierte Dateien nur noch Mittel, kein Anhalten (0.50.2) | 23.11. 13:25 | 16,1 h | 0,1 h |
+| Zwei Fehlalarme behoben: Programmpfade mit / (OBS) bei Sigma, Edge-Sitzungsdateien beim Ransomware-Verdacht (0.50.3) | 24.11. 05:30 | -0,2 h | 0,0 h |
 
 ### Umfang des Programms
 
 | Bereich | Zeilen (Rust) |
 |---|---:|
-| k9-core | 30.611 |
+| k9-core | 30.623 |
 | k9-dienst | 5.463 |
 | k9-agent | 4.715 |
 | k9-cli | 2.365 |
 | k9-doc | 433 |
 | k9-res | 140 |
 | k9-testsim | 212 |
-| **gesamt** | **43.939** |
+| **gesamt** | **43.951** |
 
 | Angabe | Wert |
 |---|---:|
 | Automatische Einzeltests | 389 |
 | Prüfungen im End-zu-End-Test | 45 |
-| PowerShell-Skripte (Zeilen) | 4.513 |
+| PowerShell-Skripte (Zeilen) | 4.514 |
 | Dokumentation (Markdown-Zeilen) | 6.271 |
 | Seiten dieser Anleitung (vor dieser Änderung) | 111 |
 
@@ -174,7 +175,7 @@ Feste Regel-Kennungen je Bereich (dazu kommen die Regeln aus YARA, ClamAV, den H
 | Erkennungsquellen aktiv / aktuell | 15 / 15 |
 | YARA-Regeln | 10.848 |
 | ClamAV-Signaturen | 3.642.950 |
-| Schadsoftware-Hashes | 1.227.019 |
+| Schadsoftware-Hashes | 1.227.362 |
 | Schad- und Phishing-Adressen | 212.016 |
 | CISA-KEV-Einträge | 1.790 |
 
@@ -265,24 +266,25 @@ Insgesamt **200** Erkennungen.
 
 | Art | Anzahl |
 |---|---:|
-| Verdächtiger Prozess | 179 |
-| Datei | 14 |
-| Hinweis | 4 |
+| Verdächtiger Prozess | 192 |
+| Datei | 3 |
+| Hinweis | 2 |
 | Browser-Erweiterung | 2 |
 | Autostart | 1 |
 
 | Schwere | Anzahl |
 |---|---:|
-| Mittel | 163 |
-| Hoch | 26 |
-| Kritisch | 5 |
-| Niedrig | 3 |
+| Mittel | 167 |
+| Hoch | 21 |
+| Kritisch | 8 |
 | Info | 3 |
+| Niedrig | 1 |
 
 | Status | Anzahl |
 |---|---:|
-| entschieden | 190 |
-| automatisch | 10 |
+| automatisch | 98 |
+| entschieden | 96 |
+| offen | 6 |
 
 Erkannte und behobene Fehlalarme (seit 14.11. abends erfasst): 5 Ursachen, 18 Meldungen – Firefox-eigene Erweiterungen (5) und Suchmaschinen (6), Test-Agent des End-zu-End-Tests las echte Browserordner (3), Temp-Dateien von clamd beim Test (2), leere Chrome-Registry-Einträge (2, jetzt nur Info). Alle Ursachen sind behoben und durch Tests abgesichert.
 
